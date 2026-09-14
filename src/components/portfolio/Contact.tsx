@@ -1,11 +1,22 @@
 import { motion } from "framer-motion";
-import { Mail, MessageCircle, Send, Github, Linkedin, Instagram } from "lucide-react";
+import {
+  Mail,
+  MessageCircle,
+  Send,
+  Github,
+  Linkedin,
+  Instagram,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react";
 import { useState } from "react";
 import { SectionHeader } from "./Section";
 import emailjs from "@emailjs/browser";
 
-// EmailJS Credentials
-const EMAILJS_PUBLIC_KEY = "ZY0Kfe2e3K9l9Zbv6";
+// EmailJS Credentials configured from user settings
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_zex0m8x";
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_7iz8jvr";
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "uPFpz5aPO1wo1u7tP";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -17,33 +28,53 @@ export function Contact() {
 
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
+    setStatusMessage(null);
 
     try {
       await emailjs.send(
-        "service_1oy0ibw",
-        "template_53orn09",
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
+          name: formData.name,
           from_name: formData.name,
+          email: formData.email,
           from_email: formData.email,
-          subject: formData.subject,
+          reply_to: formData.email,
+          subject: formData.subject || "New inquiry from portfolio",
+          title: formData.subject || "New inquiry from portfolio",
           message: formData.message,
           to_name: "Muthukumaran",
         },
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_PUBLIC_KEY,
       );
 
       setSent(true);
+      setStatusMessage({
+        type: "success",
+        text: "Thank you! Your message has been sent successfully. I will get back to you soon!",
+      });
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSent(false), 5000);
-    } catch (error) {
+      setTimeout(() => {
+        setSent(false);
+        setStatusMessage(null);
+      }, 6000);
+    } catch (error: unknown) {
       console.error("EmailJS Submission Error:", error);
-      alert(
-        "Failed to send message. Please ensure you replaced EMAILJS_PUBLIC_KEY with your actual Public Key in Contact.tsx!"
-      );
+      const err = error as { text?: string; message?: string } | undefined;
+      const errDetail =
+        err?.text || err?.message || "Failed to send message. Please try again or email directly.";
+      setStatusMessage({
+        type: "error",
+        text: `Message failed to send: ${errDetail}`,
+      });
     } finally {
       setSending(false);
     }
@@ -190,6 +221,25 @@ export function Contact() {
                 placeholder="Tell me about your idea..."
               />
             </div>
+
+            {statusMessage && (
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`flex items-center gap-3 rounded-xl p-3.5 text-xs font-medium ${
+                  statusMessage.type === "success"
+                    ? "border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                    : "border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-400"
+                }`}
+              >
+                {statusMessage.type === "success" ? (
+                  <CheckCircle2 className="h-4 w-4 shrink-0" />
+                ) : (
+                  <AlertCircle className="h-4 w-4 shrink-0" />
+                )}
+                <span>{statusMessage.text}</span>
+              </motion.div>
+            )}
 
             <button
               type="submit"
