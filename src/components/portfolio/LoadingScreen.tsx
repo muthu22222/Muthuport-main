@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { GearLoader } from "./GearLoader";
 
 export function LoadingScreen() {
   const [loading, setLoading] = useState(true);
@@ -31,11 +32,6 @@ export function LoadingScreen() {
     };
   }, []);
 
-  // SVG Circle dimensions
-  const radius = 54;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (counter / 100) * circumference;
-
   const titleText = "WELCOME TO MY PORTFOLIO";
 
   return (
@@ -55,51 +51,12 @@ export function LoadingScreen() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[22rem] w-[22rem] rounded-full bg-[#C24366]/20 blur-[100px] pointer-events-none" />
 
           <div className="relative flex flex-col items-center gap-9">
-            {/* High-tech Circular Ring with central initial */}
-            <div className="relative flex h-36 w-36 items-center justify-center">
-              {/* Outer decorative subtle dotted track */}
-              <div className="absolute inset-0 rounded-full border border-dashed border-white/10 animate-[spin_30s_linear_infinite]" />
+            {/* Rotating Interlocking Gears Loader */}
+            <div className="relative flex items-center justify-center">
+              {/* Subtle outer tech halo */}
+              <div className="absolute -inset-6 rounded-full border border-dashed border-white/10 animate-[spin_35s_linear_infinite] pointer-events-none" />
 
-              {/* Progress Ring */}
-              <svg className="absolute h-full w-full -rotate-90">
-                <defs>
-                  <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#800021" />
-                    <stop offset="50%" stopColor="#881144" />
-                    <stop offset="100%" stopColor="#ec8298" />
-                  </linearGradient>
-                </defs>
-                <circle
-                  cx="72"
-                  cy="72"
-                  r={radius}
-                  className="stroke-white/[0.06] fill-none"
-                  strokeWidth="2.5"
-                />
-                <motion.circle
-                  cx="72"
-                  cy="72"
-                  r={radius}
-                  stroke="url(#loaderGradient)"
-                  className="fill-none drop-shadow-[0_0_8px_rgba(194,67,102,0.8)]"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeDasharray={circumference}
-                  animate={{ strokeDashoffset }}
-                  transition={{ ease: "easeInOut" }}
-                />
-              </svg>
-
-              {/* Center Medallion */}
-              <motion.div
-                className="h-20 w-20 rounded-full border border-[#C24366]/40 bg-[#16060c]/80 backdrop-blur-md shadow-[0_0_30px_rgba(136,17,68,0.4)] flex items-center justify-center"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <span className="text-2xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-[#f9dbdb] via-[#ec8298] to-[#C24366]">
-                  M
-                </span>
-              </motion.div>
+              <GearLoader size={180} speed={3.6} glow={true} />
             </div>
 
             {/* High-tech Typography & Status Bar */}
