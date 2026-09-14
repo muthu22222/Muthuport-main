@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Sparkles,
-  Download,
-} from "lucide-react";
+import { ArrowRight, Sparkles, Download } from "lucide-react";
 import profile from "@/assets/profile.jpg";
 import resume from "@/assets/resume.jpg";
 import resumePdf from "@/assets/resume.pdf";
@@ -20,7 +16,7 @@ function CountUp({ to, duration = 3.5, suffix = "" }: CountUpProps) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let start = 0;
+    const start = 0;
     const end = to;
     if (start === end) return;
 
@@ -51,7 +47,6 @@ function CountUp({ to, duration = 3.5, suffix = "" }: CountUpProps) {
     </>
   );
 }
-
 
 export function Hero() {
   return (
@@ -100,8 +95,8 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="mt-6 max-w-xl text-base text-muted-foreground font-normal leading-relaxed sm:text-lg"
           >
-            Full Stack Web Developer & UI/UX Designer crafting fast, beautiful
-            interfaces with React, Node.js and a designer's eye for detail.
+            Full Stack Web Developer & UI/UX Designer crafting fast, beautiful interfaces with
+            React, Node.js and a designer's eye for detail.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -179,7 +174,6 @@ export function Hero() {
                   />
                 </div>
               </div>
-
             </div>
           </div>
 

@@ -11,12 +11,12 @@ import studymateDashboard from "@/assets/studymate_dashboard.png";
 import studymateSignup from "@/assets/studymate_signup.png";
 import studymateLanding from "@/assets/studymate_landing.png";
 
-import frostbiteBrowse from "@/assets/frostbite_browse.png";
-import frostbiteDetails from "@/assets/frostbite_details.png";
-import frostbiteBrochure from "@/assets/frostbite_brochure.png";
+import factorySightLanding from "@/assets/factory_sight_landing.png";
+import factorySightOverview from "@/assets/factory_sight_overview.png";
+import factorySightTelemetry from "@/assets/factory_sight_telemetry.png";
 
-import factorySightDashboard from "@/assets/factory_sight_dashboard.jpg";
-import factorySightAnalytics from "@/assets/factory_sight_analytics.jpg";
+import insightNexusDashboard from "@/assets/insight_nexus_dashboard.jpg";
+import insightNexusComparison from "@/assets/insight_nexus_comparison.jpg";
 
 const projects = [
   {
@@ -66,43 +66,46 @@ const projects = [
     title: "Factory Sight AI",
     description:
       "An AI-powered predictive maintenance platform that combines sensor monitoring, YOLO-based defect detection, XGBoost failure prediction, and Gemini AI analysis to identify machine risks and provide automated maintenance alerts.",
-    image: factorySightDashboard,
-    tags: ["React.js", "Node.js", "AI/API Integration", "YOLO", "XGBoost", "Gemini AI"],
+    image: factorySightLanding,
+    tags: ["React.js", "Node.js", "AI/API Integration", "YOLOv8", "XGBoost", "Gemini AI"],
     demo: "#",
     repo: "https://github.com/muthu22222/Factory-Sight-AI",
     designs: [
       {
-        image: factorySightDashboard,
+        image: factorySightLanding,
         caption:
-          "Dashboard Overview — real-time sensor monitoring, YOLO defect detection feed, and XGBoost failure risk gauge.",
+          "Predictive System Cockpit — real-time CNC milling center sensor telemetry, XGBoost RUL health, and YOLOv8 defect detection.",
       },
       {
-        image: factorySightAnalytics,
+        image: factorySightOverview,
         caption:
-          "Automated Maintenance Alert — YOLO visual inspection, XGBoost Remaining Useful Life (RUL) curve, and Gemini AI root-cause diagnostics.",
+          "Shop Floor Real-Time Overview — live SCADA telemetry ingestion, OEE metrics, and multi-unit industrial machine monitoring.",
+      },
+      {
+        image: factorySightTelemetry,
+        caption:
+          "Waveform & Digital Twin Engine — high-frequency machine telemetry, 3D spatial twin nodes, and live vibration waveform.",
       },
     ],
   },
   {
-    title: "Ready-to-Eat",
+    title: "Insight Nexus Pro",
     description:
-      "A mobile/web food ordering platform letting users browse, order, and track ready-made food from nearby restaurants in real time. Deployed using Firebase for backend services.",
-    image: frostbiteBrowse,
-    tags: ["React.js", "Node.js", "MySQL", "Firebase"],
+      "An AI-powered interior design platform that redesigns any uploaded room while preserving its original structure, dimensions, perspective, walls, windows, and flooring. Users can select interior styles and generate personalized room designs in real time.",
+    image: insightNexusDashboard,
+    tags: ["React.js", "Node.js", "AI/API Integration", "ControlNet", "Computer Vision"],
     demo: "#",
-    repo: "https://github.com/muthu22222/readytoeat",
+    repo: "https://github.com/muthu22222/Insight-Nexus-Pro",
     designs: [
       {
-        image: frostbiteBrowse,
-        caption: "Browse Meals — browse food categories and items in real time.",
+        image: insightNexusDashboard,
+        caption:
+          "AI Studio Workspace — structural preservation locking (walls, windows, flooring) with multi-style generation and optimization controls.",
       },
       {
-        image: frostbiteDetails,
-        caption: "Product Detail — view item details, pricing, and order tracking.",
-      },
-      {
-        image: frostbiteBrochure,
-        caption: "Brochure Request — simple dynamic order tracking form.",
+        image: insightNexusComparison,
+        caption:
+          "Before & After Comparison Slider — seamless room redesign while strictly preserving natural lighting, window lines, and spatial perspective.",
       },
     ],
   },
