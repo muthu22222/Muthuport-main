@@ -93,7 +93,7 @@ const projects = [
     description:
       "An AI-powered interior design platform that redesigns any uploaded room while preserving its original structure, dimensions, perspective, walls, windows, and flooring. Users can select interior styles and generate personalized room designs in real time.",
     image: insightNexusDashboard,
-    tags: ["React.js", "Node.js", "AI/API Integration", "ControlNet", "Computer Vision"],
+    tags: ["React.js", "Node.js", "AI/API Integration", "ControlNet"],
     demo: "#",
     repo: "https://github.com/muthu22222/Insight-Nexus-Pro",
     designs: [
