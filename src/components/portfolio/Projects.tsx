@@ -15,6 +15,9 @@ import frostbiteBrowse from "@/assets/frostbite_browse.png";
 import frostbiteDetails from "@/assets/frostbite_details.png";
 import frostbiteBrochure from "@/assets/frostbite_brochure.png";
 
+import factorySightDashboard from "@/assets/factory_sight_dashboard.jpg";
+import factorySightAnalytics from "@/assets/factory_sight_analytics.jpg";
+
 const projects = [
   {
     title: "Health Nav",
@@ -25,7 +28,10 @@ const projects = [
     demo: "#",
     repo: "https://github.com/muthu22222",
     designs: [
-      { image: clinic, caption: "Health Nav — Healthcare doctor recommendation & specialist matching." },
+      {
+        image: clinic,
+        caption: "Health Nav — Healthcare doctor recommendation & specialist matching.",
+      },
     ],
   },
   {
@@ -37,10 +43,44 @@ const projects = [
     demo: "#",
     repo: "https://github.com/muthu22222/Study-Mate-AI",
     designs: [
-      { image: studymateLanding, caption: "Landing Page — conversion-focused marketing page highlighting core features." },
-      { image: studymateDashboard, caption: "Dashboard Home — daily study schedules, statistics cards, and upcoming exams." },
-      { image: studymateAnalytics, caption: "Progress Analytics — comprehensive learning trends, subject distributions, and AI insights." },
-      { image: studymateSignup, caption: "User Onboarding — seamless sign-up and authentication onboarding flow." },
+      {
+        image: studymateLanding,
+        caption: "Landing Page — conversion-focused marketing page highlighting core features.",
+      },
+      {
+        image: studymateDashboard,
+        caption: "Dashboard Home — daily study schedules, statistics cards, and upcoming exams.",
+      },
+      {
+        image: studymateAnalytics,
+        caption:
+          "Progress Analytics — comprehensive learning trends, subject distributions, and AI insights.",
+      },
+      {
+        image: studymateSignup,
+        caption: "User Onboarding — seamless sign-up and authentication onboarding flow.",
+      },
+    ],
+  },
+  {
+    title: "Factory Sight AI",
+    description:
+      "An AI-powered predictive maintenance platform that combines sensor monitoring, YOLO-based defect detection, XGBoost failure prediction, and Gemini AI analysis to identify machine risks and provide automated maintenance alerts.",
+    image: factorySightDashboard,
+    tags: ["React.js", "Node.js", "AI/API Integration", "YOLO", "XGBoost", "Gemini AI"],
+    demo: "#",
+    repo: "https://github.com/muthu22222/Factory-Sight-AI",
+    designs: [
+      {
+        image: factorySightDashboard,
+        caption:
+          "Dashboard Overview — real-time sensor monitoring, YOLO defect detection feed, and XGBoost failure risk gauge.",
+      },
+      {
+        image: factorySightAnalytics,
+        caption:
+          "Automated Maintenance Alert — YOLO visual inspection, XGBoost Remaining Useful Life (RUL) curve, and Gemini AI root-cause diagnostics.",
+      },
     ],
   },
   {
@@ -52,15 +92,26 @@ const projects = [
     demo: "#",
     repo: "https://github.com/muthu22222/readytoeat",
     designs: [
-      { image: frostbiteBrowse, caption: "Browse Meals — browse food categories and items in real time." },
-      { image: frostbiteDetails, caption: "Product Detail — view item details, pricing, and order tracking." },
-      { image: frostbiteBrochure, caption: "Brochure Request — simple dynamic order tracking form." },
+      {
+        image: frostbiteBrowse,
+        caption: "Browse Meals — browse food categories and items in real time.",
+      },
+      {
+        image: frostbiteDetails,
+        caption: "Product Detail — view item details, pricing, and order tracking.",
+      },
+      {
+        image: frostbiteBrochure,
+        caption: "Brochure Request — simple dynamic order tracking form.",
+      },
     ],
   },
 ];
 
 export function Projects() {
-  const [activeDesigns, setActiveDesigns] = useState<{ image: string; caption: string }[] | null>(null);
+  const [activeDesigns, setActiveDesigns] = useState<{ image: string; caption: string }[] | null>(
+    null,
+  );
   const [activeSlide, setActiveSlide] = useState(0);
 
   const openLightbox = (designsList: { image: string; caption: string }[]) => {
@@ -257,7 +308,7 @@ export function Projects() {
                       onClick={() =>
                         downloadFile(
                           activeDesigns[activeSlide].image,
-                          `StudyMate_Design_${activeSlide + 1}.png`
+                          `StudyMate_Design_${activeSlide + 1}.png`,
                         )
                       }
                       className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.1] bg-white/[0.04] text-foreground hover:text-white hover:border-[#C24366]/50 hover:shadow-[0_0_15px_rgba(194,67,102,0.35)] transition-all hover:scale-105 cursor-pointer"
