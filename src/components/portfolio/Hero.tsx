@@ -131,7 +131,7 @@ export function Hero() {
           >
             {[
               { count: 4, suffix: "+", label: "Projects Completed" },
-              { count: 5, suffix: "+", label: "Courses Completed" },
+              { count: 6, suffix: "+", label: "Certifications & Courses" },
               { count: 7, suffix: "+", label: "Tools Learned" },
             ].map((stat, idx) => (
               <div
