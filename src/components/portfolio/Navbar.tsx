@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
+import mkFavicon from "@/assets/mk_favicon.png";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -41,8 +42,13 @@ export function Navbar() {
         >
           <a
             href="#home"
-            className="group flex items-center gap-1 font-display text-lg font-bold tracking-tight transition-transform hover:scale-105"
+            className="group flex items-center gap-2 font-display text-lg font-bold tracking-tight transition-transform hover:scale-105"
           >
+            <img
+              src={mkFavicon}
+              alt="MK Logo"
+              className="h-7 w-7 rounded-lg object-contain shadow-sm ring-1 ring-[#881144]/20 dark:ring-white/10"
+            />
             <span className="text-transparent bg-clip-text dark:bg-gradient-to-r dark:from-[#f9dbdb] dark:via-[#ec8298] dark:to-[#C24366] bg-gradient-to-r from-[#800021] via-[#881144] to-[#C24366] font-extrabold">
               MK
             </span>
